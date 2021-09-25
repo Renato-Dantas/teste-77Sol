@@ -5,6 +5,33 @@ import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 
 const globalColor = "#1335C6";
+const options = [
+  {
+    value: "fibrocimento-madeira",
+    label: "Fibrocimento-madeira",
+  },
+  {
+    value: "fibrocimento-metalico",
+    label: "Fibrocimento-metalico",
+  },
+  {
+    value: "ceramico",
+    label: "Cerâmico",
+  },
+  {
+    value: "metalico",
+    label: "Metálico",
+  },
+  {
+    value: "laje",
+    label: "Laje",
+  },
+  {
+    value: "solo",
+    label: "Solo",
+  },
+];
+
 
 const TelaInicial = ({
   loadData,
@@ -13,38 +40,24 @@ const TelaInicial = ({
   telhado,
   handleChangeOption,
   handleChangeSlide,
+  setCep
 }) => {
-  const options = [
-    {
-      value: "fibrocimento-madeira",
-      label: "Fibrocimento-madeira",
-    },
-    {
-      value: "fibrocimento-metalico",
-      label: "Fibrocimento-metalico",
-    },
-    {
-      value: "ceramico",
-      label: "Cerâmico",
-    },
-    {
-      value: "metalico",
-      label: "Metálico",
-    },
-    {
-      value: "laje",
-      label: "Laje",
-    },
-    {
-      value: "solo",
-      label: "Solo",
-    },
-  ];
-
+  
+  //Tratamento da mascará de CEP
+  const cepInput = document.querySelector(".inp-cep");
+  var zipCode = "";
+  cepInput?.addEventListener("keyup", () => {
+    zipCode = cepInput.value;
+    if (zipCode)
+      if (zipCode.length === 8) {
+        cepInput.value = `${zipCode.substr(0, 5)} - ${zipCode.substr(5, 9)}`;
+        setCep(cepInput.value);
+      }
+  });
   return (
     <Box component="form" className="box-form" noValidate autoComplete="off">
-      {/* INPUT PARA USUARIO COLOCAR O CEP */}
 
+      {/* INPUT PARA USUARIO COLOCAR O CEP */}
       <TextField
         id="outlined-basic"
         label="CEP"
