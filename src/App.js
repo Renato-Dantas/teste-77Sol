@@ -78,6 +78,7 @@ function App() {
         handleChangeOption={handleChangeOption}
         handleChangeSlide={handleChangeSlide}
         setCep={setCep}
+        valorConta={valorConta}
       />
       <TelaRequest parcelas={parcelas} data={data} setData={setData} setCep={setCep} setTelhado={setTelhado}/>
     </div>

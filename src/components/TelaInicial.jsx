@@ -3,6 +3,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
+import { Typography } from "@material-ui/core";
 
 const globalColor = "#1335C6";
 const options = [
@@ -40,7 +41,8 @@ const TelaInicial = ({
   telhado,
   handleChangeOption,
   handleChangeSlide,
-  setCep
+  setCep,
+  valorConta
 }) => {
   
   //Tratamento da mascará de CEP
@@ -66,6 +68,7 @@ const TelaInicial = ({
         type="text"
         className="inp-cep"
         error={isInpError}
+        sx={{border:'1px solid #1335c6'}}
       />
 
       {/* SELETOR DE ESTRUTURA */}
@@ -78,6 +81,7 @@ const TelaInicial = ({
         onChange={handleChangeOption}
         className="inp-box"
         error={isInpError}
+        sx={{border:'1px solid #1335c6'}}
       >
         {options.map((option) => (
           <MenuItem
@@ -90,8 +94,10 @@ const TelaInicial = ({
         ))}
       </TextField>
 
+      <Typography className='label-conta' fontFamily='Roboto Mono' sx={{fontWeight:'bold'}}>Valor mensal da sua conta de energia: R$ {valorConta +',00'}</Typography>
+
       {/* SLIDER PARA ESCOLHER O VALOR DA CONTA */}
-      <Box width={300} sx={{ m: "30px  auto" }}>
+      <Box width={300} sx={{ m: "10px  auto" }}>
         <Slider
           aria-label="Default"
           valueLabelDisplay="on"
