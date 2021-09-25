@@ -40,4 +40,4 @@ Na pasta do projeto, **abra o cmd** e siga os passos abaixo:
 
 Caso queira ver o projeto funcionando, acesso o link:
 
-<a href='' target='_blanck'>Click Aqui para ver o projeto no GitHub Pages</a>
+<a href='https://renato-dantas.github.io/teste-77Sol/' target='_blanck'>Click Aqui para ver o projeto no GitHub Pages</a>
