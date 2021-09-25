@@ -1,50 +1,24 @@
 import { Typography } from "@material-ui/core";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 import React, { useEffect, useState } from "react";
 import Api from "./api/api";
-import dollar from './assets/dollar.svg'
-import team from './assets/team.svg'
-import sun from './assets/sun.svg'
-import logo from './assets/logo.svg'
-import wave from './assets/wave.svg'
+import dollar from "./assets/dollar.svg";
+import team from "./assets/team.svg";
+import sun from "./assets/sun.svg";
+import logo from "./assets/logo.svg";
+import wave from "./assets/wave.svg";
 import "./styles/style.css";
+import TelaInical from "./components/TelaInicial";
 
 function App() {
-
-  const options = [
-    {
-      value: "fibrocimento-madeira",
-      label: "Fibrocimento-madeira",
-    },
-    {
-      value: "fibrocimento-metalico",
-      label: "Fibrocimento-metalico",
-    },
-    {
-      value: "ceramico",
-      label: "Cerâmico",
-    },
-    {
-      value: "metalico",
-      label: "Metálico",
-    },
-    {
-      value: "laje",
-      label: "Laje",
-    },
-    {
-      value: "solo",
-      label: "Solo",
-    },
-  ];
-
   var i = 0;
 
   const globalColor = "#1335C6";
+
+  const [data, setData] = useState();
+
+  const [parcelas, setParcelas] = useState();
 
   const [telhado, setTelhado] = useState("");
 
@@ -52,12 +26,8 @@ function App() {
 
   const [valorConta, setValorConta] = useState(100);
 
-  const [data, setData] = useState();
-
-  const [parcelas, setParcelas] = useState();
-
   const [isInpError, setIsInpError] = useState(false);
-  
+
   const handleChangeOption = (event) => {
     setTelhado(event.target.value);
   };
@@ -77,41 +47,41 @@ function App() {
   }, [data]);
 
   //Tratamento da mascará de CEP
-  const cepInput = document.querySelector('.inp-cep')
-  var zipCode='';
-  cepInput?.addEventListener('keyup',()=>{
+  const cepInput = document.querySelector(".inp-cep");
+  var zipCode = "";
+  cepInput?.addEventListener("keyup", () => {
     zipCode = cepInput.value;
-    if(zipCode)
-    if(zipCode.length ===8){
-      cepInput.value = `${zipCode.substr(0,5)} - ${zipCode.substr(5,9)}`;
-      setCep(cepInput.value)
-    }
-  })
+    if (zipCode)
+      if (zipCode.length === 8) {
+        cepInput.value = `${zipCode.substr(0, 5)} - ${zipCode.substr(5, 9)}`;
+        setCep(cepInput.value);
+      }
+  });
 
   async function loadData() {
     Api({ telhado, valorConta, cep }).then((data) => {
       setData(data);
-      var screenCalc = document.getElementsByClassName('box-request')
-      var screenForm = document.getElementsByClassName('box-form')
+      var screenCalc = document.getElementsByClassName("box-request");
+      var screenForm = document.getElementsByClassName("box-form");
 
-      if(data?.parcelamento){
-        screenCalc[0].style.display='flex'
-        screenForm[0].style.display='none'
-      }else{     
-        setIsInpError(true)   
-        alert('Preencha todos os campos para ver o cálculo!')
+      if (data?.parcelamento) {
+        screenCalc[0].style.display = "flex";
+        screenForm[0].style.display = "none";
+      } else {
+        setIsInpError(true);
+        alert("Preencha todos os campos para ver o cálculo!");
       }
     });
   }
 
-  function onHandleRestart(){
+  function onHandleRestart() {
     document.location.reload(true);
   }
 
   return (
-    <div className='container-geral' >
-      <img  src={wave} alt='wave'/>
-      <img id='logo' src={logo} alt='logo'/>
+    <div className="container-geral">
+      <img src={wave} alt="wave" />
+      <img id="logo" src={logo} alt="logo" />
       <Typography
         variant="h2"
         component="h1"
@@ -120,64 +90,17 @@ function App() {
       >
         SIMULADOR SOLAR
       </Typography>
-      <Box component="form" className="box-form" noValidate autoComplete="off">
-        {/* INPUT PARA USUARIO COLOCAR O CEP */}
-
-        <TextField
-          id="outlined-basic"
-          label="CEP"
-          variant="outlined"
-          onChange={handleChangeInput}
-          type="text"
-          className="inp-cep"
-          error={isInpError}
-        />
-
-        {/* SELETOR DE ESTRUTURA */}
-        <TextField
-          id="outlined-select-currency"
-          select
-          label="Tipo Telhado"
-          value={telhado}
-          defaultValue=""
-          onChange={handleChangeOption}
-          className="inp-box"
-          error={isInpError}
-        >
-          {options.map((option) => (
-            <MenuItem
-              key={option.value}
-              value={option.value}
-              sx={{ color: globalColor }}
-            >
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        {/* SLIDER PARA ESCOLHER O VALOR DA CONTA */}
-        <Box width={300} sx={{ m: "30px  auto" }}>
-          <Slider
-            aria-label="Default"
-            valueLabelDisplay="on"
-            min={100}
-            max={10000}
-            onChange={handleChangeSlide}
-            sx={{ color: "#1335C6" }}
-          />
-        </Box>
-        {/* BOTÃO ENVIAR DADOS */}
-        <Button
-          variant="contained"
-          onClick={loadData}
-          sx={{backgroundColor: globalColor}}          
-        >
-          Calcular
-        </Button>
-      </Box>
+      <TelaInical
+        loadData={loadData}
+        handleChangeInput={handleChangeInput}
+        isInpError={isInpError}
+        telhado={telhado}
+        handleChangeOption={handleChangeOption}
+        handleChangeSlide={handleChangeSlide}
+      />
 
       {/* BOX de RESPOSTAS A REQUEST */}
-      <Box className='box-request'>
+      <Box className="box-request">
         {/* OPÇÕES DE PARCELAS */}
         <Box>
           <Typography
@@ -196,7 +119,7 @@ function App() {
           <Typography
             variant="h6"
             fontFamily="Roboto Mono"
-            sx={{color:globalColor, mb:'15px'}}
+            sx={{ color: globalColor, mb: "15px" }}
           >
             Diversos planos para realizar seu projeto:
           </Typography>
@@ -214,7 +137,7 @@ function App() {
         <Box className="card-box">
           {/* BOX EMPRESAS PARCEIRAS NO LOCAL */}
           <Box className="card">
-            <img className='card-img' src={team} alt='team ico'/>
+            <img className="card-img" src={team} alt="team ico" />
             <Typography variant="h6" fontFamily="Roboto Mono">
               Temos {data?.integradores_regiao} empresas parceiras na sua
               região!
@@ -223,7 +146,7 @@ function App() {
 
           {/* Box ECONOMIA */}
           <Box className="card" height="400px">
-          <img className='card-img'  src={dollar} alt='dollar ico'/>
+            <img className="card-img" src={dollar} alt="dollar ico" />
             <Typography fontFamily="Roboto Mono" variant="h6">
               Considerando o tempo de garantia do equipamento, você terá uma
               economia de R$ {data?.economia + ",00"}!
@@ -232,7 +155,7 @@ function App() {
 
           {/* BOX POTENCIAL ECOLOGICO */}
           <Box className="card">
-          <img className='card-img'  src={sun} alt='sun ico'/>
+            <img className="card-img" src={sun} alt="sun ico" />
             <Typography variant="h6" fontFamily="Roboto Mono">
               O Potêncial de irradiância da sua região é de{" "}
               {data?.irradiancia / 1000}
@@ -241,7 +164,11 @@ function App() {
           </Box>
         </Box>
         {/* BOTÃO ENVIAR DADOS */}
-        <Button variant="contained" className="btn-consult" onClick={onHandleRestart}>
+        <Button
+          variant="contained"
+          className="btn-consult"
+          onClick={onHandleRestart}
+        >
           Faça uma consulta!
         </Button>
       </Box>
