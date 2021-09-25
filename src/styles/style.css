@@ -132,3 +132,10 @@
 .link {
   text-decoration: none;
 }
+
+@media screen and (max-width: 500px) {
+  .card{
+    margin-left: 0px;
+    height: auto;
+  }
+}
