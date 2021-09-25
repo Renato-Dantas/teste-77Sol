@@ -43,7 +43,7 @@ const TelaRequest = ({ parcelas, data }) => {
           </Typography>
           {parcelas?.map((parcela) => (
             <OpcoesParcelas
-              i={i}
+              key={i++}
               texto={`${parcela.parcelas}x de R$ ${parcela.valor_minimo.toFixed(
                 2
               )} a R$

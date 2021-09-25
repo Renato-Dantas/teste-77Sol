@@ -1,9 +1,9 @@
 import { Typography } from "@material-ui/core";
 import Box from "@mui/material/Box";
 
-const OpcoesParcelas = ({i, texto}) => {
+const OpcoesParcelas = ({texto}) => {
     return ( 
-        <Box key={i++} className="itens">
+        <Box className="itens">
         <Typography className="global-font">
           {texto}
         </Typography>
