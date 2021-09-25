@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@700&display=swap");
+
+#container-geral{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#logo {
+  width: 100px;
+  display: block;
+  margin: auto;
+}
+.title-logo {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: #1335c6;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.global-font {
+  font-family: "Roboto Mono";
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+.box-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  border: none;
+  border-color: #1335c6;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 25px;
+  margin: auto;
+  margin-bottom: 100px;
+  box-shadow: 3px 3px 6px 6px #ddd;
+  background: linear-gradient(90deg, #fff 40%, #0a79c9 140%);
+}
+
+.inp-box {
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+.box-request{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+
+.itens {
+  align-items: center;
+  border: "1px solid";
+  display: "flex";
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #1335c6 30%, #0a79c9 90%);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.itens:hover {
+  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
+  color: #000;
+}
+
+.card {
+  background: linear-gradient(45deg, #1335c6 30%, #0a79c9 90%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 400px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.card-img {
+  width: 150px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+.title-request{
+    color: #1335c6;
+}
+
+.btn-consult {
+  background: linear-gradient(90deg, #1335c6 30%, #0a79c9 90%);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
+  height: 50px;
+  padding: 0 30px;
+  transition: all 0.3s ease-in;
+}
+
+.btn-consult:hover {
+  border: 2px solid black;
+  height: 55px;
+  
+}
+

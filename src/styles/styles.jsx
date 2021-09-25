@@ -47,13 +47,12 @@ const useStyles = makeStyles({
   },
 
   boxRequest: {
-    border: "1px solid",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "30px",
-    padding: "20px",
+    // marginTop: "30px",
+    height: '100vh'
   },
 
   btnConsulta: {
