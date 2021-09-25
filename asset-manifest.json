@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/teste-77Sol/static/css/main.b3c6942a.chunk.css",
+    "main.js": "/teste-77Sol/static/js/main.25261ee9.chunk.js",
+    "main.js.map": "/teste-77Sol/static/js/main.25261ee9.chunk.js.map",
+    "runtime-main.js": "/teste-77Sol/static/js/runtime-main.4359ffa7.js",
+    "runtime-main.js.map": "/teste-77Sol/static/js/runtime-main.4359ffa7.js.map",
+    "static/js/2.d5090784.chunk.js": "/teste-77Sol/static/js/2.d5090784.chunk.js",
+    "static/js/2.d5090784.chunk.js.map": "/teste-77Sol/static/js/2.d5090784.chunk.js.map",
+    "index.html": "/teste-77Sol/index.html",
+    "static/css/main.b3c6942a.chunk.css.map": "/teste-77Sol/static/css/main.b3c6942a.chunk.css.map",
+    "static/js/2.d5090784.chunk.js.LICENSE.txt": "/teste-77Sol/static/js/2.d5090784.chunk.js.LICENSE.txt",
+    "static/media/dollar.294bca94.svg": "/teste-77Sol/static/media/dollar.294bca94.svg",
+    "static/media/logo.29781269.svg": "/teste-77Sol/static/media/logo.29781269.svg",
+    "static/media/sun.0564cab3.svg": "/teste-77Sol/static/media/sun.0564cab3.svg",
+    "static/media/team.3c5feefb.svg": "/teste-77Sol/static/media/team.3c5feefb.svg",
+    "static/media/wave.e6bf1d3b.svg": "/teste-77Sol/static/media/wave.e6bf1d3b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4359ffa7.js",
+    "static/js/2.d5090784.chunk.js",
+    "static/css/main.b3c6942a.chunk.css",
+    "static/js/main.25261ee9.chunk.js"
+  ]
+}
