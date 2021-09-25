@@ -47,7 +47,7 @@ function App() {
       var screenForm = document.getElementsByClassName("box-form");
 
       if (data?.parcelamento) {
-        screenCalc[0].style.display = "flex";
+        screenCalc[0].style.opacity = "1";
         screenForm[0].style.display = "none";
       }else {
         setIsInpError(true);
@@ -77,7 +77,6 @@ function App() {
         handleChangeSlide={handleChangeSlide}
         setCep={setCep}
       />
-
       <TelaRequest parcelas={parcelas} data={data}/>
     </div>
   );

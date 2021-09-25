@@ -47,11 +47,15 @@
 
 
 .box-request{
-    display: none;
+    display: flex;
+    overflow: hidden;
     flex-direction: column;
+    position: absolute;
+    margin: 0;
     justify-content: center;
     align-items: center;
     transition: all .5s ease-in;
+    opacity: 0;
 }
 
 .itens {
@@ -121,6 +125,5 @@
 .btn-consult:hover {
   border: 2px solid black;
   height: 55px;
-  
 }
 
