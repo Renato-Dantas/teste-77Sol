@@ -58,16 +58,18 @@ function App() {
 
   return (
     <div className="container-geral">
-      <img src={wave} alt="wave" />
-      <img id="logo" src={logo} alt="logo" />
-      <Typography
-        variant="h2"
-        component="h1"
-        className="title-logo"
-        sx={{ mb: "30px", mt: "5px", fontFamily: "Zilla Slab" }}
-      >
-        SIMULADOR SOLAR
-      </Typography>
+      <div className='container-logo'>
+        <img src={wave} alt="wave" />
+        <img id="logo" src={logo} alt="logo" />
+        <Typography
+          variant="h2"
+          component="h1"
+          className="title-logo"
+          sx={{ mb: "30px", mt: "5px", fontFamily: "Zilla Slab" }}
+        >
+          SIMULADOR SOLAR
+        </Typography>
+      </div>
       <TelaInical
         loadData={loadData}
         handleChangeInput={handleChangeInput}
@@ -77,7 +79,7 @@ function App() {
         handleChangeSlide={handleChangeSlide}
         setCep={setCep}
       />
-      <TelaRequest parcelas={parcelas} data={data}/>
+      <TelaRequest parcelas={parcelas} data={data} setData={setData} setCep={setCep} setTelhado={setTelhado}/>
     </div>
   );
 }

@@ -12,12 +12,8 @@ const globalColor = "#1335C6";
 var i = 0;
 
 const TelaRequest = ({ parcelas, data }) => {
-  function onHandleRestart() {
-    document.location.reload(true);
-  }
-
   return (
-    <Spring from={{ opacity: 0}} to={{ opacity: 1}} config={{ delay: 1000 }}>
+    <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ delay: 1000 }}>
       {(props) => (
         <div style={props}>
           {/* BOX de RESPOSTAS A REQUEST */}
@@ -85,13 +81,15 @@ const TelaRequest = ({ parcelas, data }) => {
               />
             </Box>
             {/* BOTÃO ENVIAR DADOS */}
-            <Button
-              variant="contained"
-              className="btn-consult"
-              onClick={onHandleRestart}
+            <a
+              href="https://www.77sol.com.br/financiamentos"
+              target="_blank"
+              className="link"
             >
-              Faça uma consulta!
-            </Button>
+              <Button variant="contained" className="btn-consult">
+                Faça uma consulta!
+              </Button>
+            </a>
           </Box>
         </div>
       )}
