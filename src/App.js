@@ -6,7 +6,6 @@ import Slider from "@mui/material/Slider";
 import Button from "@mui/material/Button";
 import React, { useEffect, useState } from "react";
 import Api from "./api/api";
-import useStyles from "./styles/styles";
 import dollar from './assets/dollar.svg'
 import team from './assets/team.svg'
 import sun from './assets/sun.svg'
@@ -15,7 +14,6 @@ import wave from './assets/wave.svg'
 import "./styles/style.css";
 
 function App() {
-  const styles = useStyles();
 
   const options = [
     {
@@ -58,6 +56,8 @@ function App() {
 
   const [parcelas, setParcelas] = useState();
 
+  const [isInpError, setIsInpError] = useState(false);
+  
   const handleChangeOption = (event) => {
     setTelhado(event.target.value);
   };
@@ -76,10 +76,36 @@ function App() {
     setParcelas(data?.parcelamento);
   }, [data]);
 
+  //Tratamento da mascará de CEP
+  const cepInput = document.querySelector('.inp-cep')
+  var zipCode='';
+  cepInput?.addEventListener('keyup',()=>{
+    zipCode = cepInput.value;
+    if(zipCode)
+    if(zipCode.length ===8){
+      cepInput.value = `${zipCode.substr(0,5)} - ${zipCode.substr(5,9)}`;
+      setCep(cepInput.value)
+    }
+  })
+
   async function loadData() {
     Api({ telhado, valorConta, cep }).then((data) => {
       setData(data);
+      var screenCalc = document.getElementsByClassName('box-request')
+      var screenForm = document.getElementsByClassName('box-form')
+
+      if(data?.parcelamento){
+        screenCalc[0].style.display='flex'
+        screenForm[0].style.display='none'
+      }else{     
+        setIsInpError(true)   
+        alert('Preencha todos os campos para ver o cálculo!')
+      }
     });
+  }
+
+  function onHandleRestart(){
+    document.location.reload(true);
   }
 
   return (
@@ -103,18 +129,20 @@ function App() {
           variant="outlined"
           onChange={handleChangeInput}
           type="text"
-          className="inp-box"
+          className="inp-cep"
+          error={isInpError}
         />
 
         {/* SELETOR DE ESTRUTURA */}
         <TextField
           id="outlined-select-currency"
           select
-          label="Estrutura"
+          label="Tipo Telhado"
           value={telhado}
           defaultValue=""
           onChange={handleChangeOption}
           className="inp-box"
+          error={isInpError}
         >
           {options.map((option) => (
             <MenuItem
@@ -150,8 +178,6 @@ function App() {
 
       {/* BOX de RESPOSTAS A REQUEST */}
       <Box className='box-request'>
-      <img  src={wave} alt='wave'/>
-
         {/* OPÇÕES DE PARCELAS */}
         <Box>
           <Typography
@@ -215,7 +241,7 @@ function App() {
           </Box>
         </Box>
         {/* BOTÃO ENVIAR DADOS */}
-        <Button variant="contained" className="btn-consult">
+        <Button variant="contained" className="btn-consult" onClick={onHandleRestart}>
           Faça uma consulta!
         </Button>
       </Box>
